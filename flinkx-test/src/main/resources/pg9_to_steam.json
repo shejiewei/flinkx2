@@ -1,0 +1,49 @@
+{
+  "job": {
+    "content": [{
+      "reader": {
+        "parameter": {
+          "username": "postgres",
+          "password": "postgres",
+          "url": "jdbc:postgresql://120.78.216.6:11085/postgres",
+          "databaseName": "postgres",
+          "cat": "insert,update,delete",
+          "tableList": ["public.test_e"],
+          "slotName": "flinkx_postgres157",
+          "allowCreateSlot": true,
+          "temporary": true,
+          "pavingData": false
+        },
+        "name": "pg9walreader"
+      },
+      "writer" : {
+        "parameter" : {
+          "print" : true
+        },
+        "name" : "streamwriter"
+      }
+    }],
+    "setting": {
+      "speed": {
+        "channel": 1,
+        "bytes": 0
+      },
+      "errorLimit": {
+        "record": 100
+      },
+      "restore": {
+        "maxRowNumForCheckpoint": 0,
+        "isRestore": false,
+        "isStream": true,
+        "restoreColumnName": "",
+        "restoreColumnIndex": 0
+      },
+      "log": {
+        "isLogger": true,
+        "level": "trace",
+        "path": "./logs/flinkx_",
+        "pattern": ""
+      }
+    }
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "job": {
+    "content": [{
+      "reader" : {
+        "parameter" : {
+          "username" : "kafka",
+          "password" : "kafka",
+          "url" : "jdbc:oracle:thin:@119.23.61.72:9019/orcl",
+          "databaseName" : "kafka",
+          "cat" : "update,insert,delete",
+          "whiteList" : [
+            "KAFKA.T1","KAFKA.T2"
+          ],
+          "statusInterval" : 10000,
+          "scn" : 0,
+          "pavingData" : true,
+		  "resetOffset":true,
+		  "fetchSize":1
+        },
+        "name" : "logminerreader"
+      },
+          "writer": {
+          "name": "eswriter",
+          "parameter": {
+            "address": "119.23.61.72:9012",
+            "username": "elastic",
+            "password": "LinkCM123",
+            "index": "people",
+            "type": "doc",
+            "bulkAction": 1,
+            "timeout": 100,
+            "idColumn": [
+              {
+                "index": 0,
+                "type": "integer"
+              }
+            ],
+            "column": [
+              {
+                "name": "id",
+                "type": "integer"
+              },
+              {
+                "name": "name",
+                "type": "string"
+              }
+            ]
+          }
+        }
+    } ],
+    "setting": {
+      "speed": {
+        "channel": 1,
+        "bytes": 0
+      },
+      "errorLimit": {
+        "record": 100
+      },
+      "restore": {
+        "maxRowNumForCheckpoint": 0,
+        "isRestore": false,
+        "isStream" : true,
+        "restoreColumnName": "",
+        "restoreColumnIndex": 0
+      },
+      "log": {
+        "isLogger": true,
+        "level": "trace",
+        "path": "./logs/flinkx_",
+        "pattern": ""
+      }
+    }
+  }
+}

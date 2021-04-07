@@ -1,0 +1,1 @@
+2021-02-01 10:58:42.635 [Legacy Source Thread - Source: oraclereader -> Sink: kafkawriter (1/1)] INFO  com.dtstack  - DtLogger config successfully, current log is [logback]

@@ -1,0 +1,54 @@
+{
+  "job": {
+    "content": [{
+      "reader" : {
+        "parameter" : {
+          "username" : "kafka",
+          "password" : "kafka",
+          "url" : "jdbc:oracle:thin:@120.78.216.6:9019/helowin",
+          "databaseName" : "KAFKA",
+          "whiteList" : [
+            "KAFKA.T1"
+          ],
+          "interval" :5,
+          "scn" : 0,
+          "resetOffset":true,
+          "fetchSize":200
+        },
+        "name" : "logminerreader"
+      },
+      "writer" : {
+        "parameter" : {
+          "producerSettings" : {
+            "zookeeper.connect" : "120.78.216.6:9018/kafka",
+            "bootstrap.servers" : "120.78.216.6:9017"
+          },
+          "topic" : "test11111"
+        },
+        "name" : "kafkawriter"
+      }
+    } ],
+    "setting": {
+      "speed": {
+        "channel": 1,
+        "bytes": 0
+      },
+      "errorLimit": {
+        "record": 10000
+      },
+      "restore": {
+        "maxRowNumForCheckpoint": 0,
+        "isRestore": false,
+        "isStream" : true,
+        "restoreColumnName": "",
+        "restoreColumnIndex": 0
+      },
+      "log": {
+        "isLogger": true,
+        "level": "trace",
+        "path": "./logs/flinkx_",
+        "pattern": ""
+      }
+    }
+  }
+}

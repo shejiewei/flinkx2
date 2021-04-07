@@ -1,0 +1,58 @@
+{
+  "job": {
+    "content": [{
+      "reader" : {
+        "parameter" : {
+          "username" : "admin",
+          "password" : "linkcm12306",
+          "url" : "jdbc:postgresql://127.0.0.1:5432/postgres",
+          "databaseName" : "postgres",
+          "cat" : "update,insert,delete",
+          "tableList" : [
+            "public.people"
+          ],
+          "statusInterval" : 10000,
+          "lsn" : 0,
+          "slotName" : "",
+          "allowCreateSlot" : true,
+          "temporary" : true,
+          "pavingData" : true
+        },
+        "name" : "pgwalreader"
+      },
+      "writer" : {
+        "parameter" : {
+          "broker" : "tcp://127.0.0.1:1883",
+          "topic" : "emp_binlog",
+          "username" : "admin",
+          "password" : "admin",
+          "isCleanSession": true,
+          "qos": 2
+        },
+        "name" : "emqxwriter"
+      }
+    } ],
+    "setting": {
+      "speed": {
+        "channel": 1,
+        "bytes": 0
+      },
+      "errorLimit": {
+        "record": 100
+      },
+      "restore": {
+        "maxRowNumForCheckpoint": 0,
+        "isRestore": false,
+        "isStream" : true,
+        "restoreColumnName": "",
+        "restoreColumnIndex": 0
+      },
+      "log": {
+        "isLogger": true,
+        "level": "trace",
+        "path": "./logs/flinkx_",
+        "pattern": ""
+      }
+    }
+  }
+}

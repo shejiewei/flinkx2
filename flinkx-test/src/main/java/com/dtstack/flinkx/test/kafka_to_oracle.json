@@ -1,0 +1,54 @@
+{
+  "job": {
+    "content": [{
+    "reader" : {
+        "parameter" : {
+          "topic" : "test11111",
+          "groupId" : "test-consumer-group",
+          "codec": "plain",
+          "blankIgnore": false,
+          "consumerSettings" : {
+            "zookeeper.connect" : "120.78.216.6:9018/kafka",
+            "bootstrap.servers" : "120.78.216.6:9017",
+            "auto.commit.interval.ms" : "1000",
+            "enable.auto.commit":false,
+            "auto.offset.reset" : "latest"
+          }
+        },
+        "name" : "kafkareader"
+      },
+          "writer": {
+		 "parameter" : {
+          "username" : "kafka",
+          "password" : "kafka",
+          "url" : "jdbc:oracle:thin:@119.23.61.72:9019/helowin",
+          "batchsize": 100,
+           "delaytime":30
+		 },
+		  "name": "logminerwriter"
+        }
+    } ],
+    "setting": {
+      "speed": {
+        "channel": 1,
+        "bytes": 0
+      },
+      "errorLimit": {
+        "record": 10000
+      },
+      "restore": {
+        "maxRowNumForCheckpoint": 10000,
+        "isRestore": true,
+        "isStream" : true,
+        "restoreColumnName": "",
+        "restoreColumnIndex": 0
+      },
+      "log": {
+        "isLogger": true,
+        "level": "trace",
+        "path": "./logs/flinkx_",
+        "pattern": ""
+      }
+    }
+  }
+}
